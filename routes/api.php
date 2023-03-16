@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CategoryProductController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -31,3 +32,9 @@ Route::get('/categories/{id}', [CategoryController::class, 'show'])->name('categ
 Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
 Route::put('/categories/{id}', [CategoryController::class, 'update'])->name('categories.update');
 Route::delete('/categories/{id}', [CategoryController::class, 'destroy'])->name('categories.destroy');
+
+// Add a category to a product
+Route::post('/categories/{category_id}/products/{product_id}', [CategoryProductController::class, 'store'])->name('categoryproduct.store');
+
+// Remove a tag from a product
+Route::delete('/categories/{category_id}/products/{product_id}', [CategoryProductController::class, 'destroy'])->name('categoryproduct.destroy');
