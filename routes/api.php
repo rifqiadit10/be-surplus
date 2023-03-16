@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CategoryProductController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductImageController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -40,8 +41,11 @@ Route::post('/images', [ImageController::class, 'store'])->name('images.store');
 Route::put('/images/{id}', [ImageController::class, 'update'])->name('images.update');
 Route::delete('/images/{id}', [ImageController::class, 'destroy'])->name('images.destroy');
 
-// Add a category to a product
+
 Route::post('/categories/{category_id}/products/{product_id}', [CategoryProductController::class, 'store'])->name('categoryproduct.store');
 
-// Remove a tag from a product
 Route::delete('/categories/{category_id}/products/{product_id}', [CategoryProductController::class, 'destroy'])->name('categoryproduct.destroy');
+
+Route::post('/products/{product_id}/images/{image_id}', [ProductImageController::class, 'store'])->name('productimage.store');
+
+Route::delete('/products/{product_id}/images/{image_id}', [ProductImageController::class, 'destroy'])->name('productimage.destroy');
