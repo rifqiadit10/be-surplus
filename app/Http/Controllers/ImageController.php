@@ -10,9 +10,6 @@ use Illuminate\Support\Str;
 
 class ImageController extends Controller
 {
-
-    use SoftDeletes;
-
     /**
      * Display a listing of the resource.
      *
@@ -106,9 +103,11 @@ class ImageController extends Controller
             return response()->json(['message' => 'Image not found'], 404);
         }
 
-        $request->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
+        // $request->validate([
+        //     'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        // ]);
+
+        dd($request->file('image'));
 
         $filename = Str::random(20). $request->file('image')->getClientOriginalExtension();
         $path = 'public/'.$filename;
