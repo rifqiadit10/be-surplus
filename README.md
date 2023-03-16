@@ -2,7 +2,7 @@
 
 1. Clone this repository 
     ```sh
-    git clone https://github.com/rifqiadit10/boxbilling-php-docker.git
+    git clone https://github.com/rifqiadit10/be-surplus.git
     ```
 2. Open CMD and go to project directory
 3. run: composer install
